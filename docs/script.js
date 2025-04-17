@@ -4,6 +4,8 @@ async function testEndpoint() {
   const data = document.getElementById('data').value;
   const responseBox = document.getElementById('responseBox');
 
+  const baseUrl = 'https://edtech-backend-hr01.onrender.com';
+
   // Define request options
   const options = {
     method: method,
@@ -19,7 +21,7 @@ async function testEndpoint() {
 
   try {
     // Fetch the data from the API
-    const res = await fetch(endpoint.startsWith('http') ? endpoint : `http://localhost:3000${endpoint}`, options);
+    const res = await fetch(endpoint.startsWith('http') ? endpoint : `${baseUrl}${endpoint}`, options);
     
     // Check if response is not OK
     if (!res.ok) {

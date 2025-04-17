@@ -19,6 +19,10 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+// Welcome route for root URL
+app.get('/', (req, res) => {
+  res.send('Welcome to the EdTech Backend API. Visit /api/users, /api/courses, or other endpoints to test. Visit the frontend at');
+});
 app.use('/api/users', userRoutes);
 app.use('/api/submissions', submissionRoutes);
 app.use('/api/lessons', lessonRoutes);
