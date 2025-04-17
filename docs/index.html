@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdTech Backend</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Welcome to the EdTech Backend</h1>
+    <p>This backend is designed to support multiple EdTech applications with a reusable, scalable architecture.</p>
+    <p>Explore the <a href="https://github.com/CatoRaymond-FS/edtech-backend">GitHub repo</a> for more info.</p>
+
+    <section id="tester">
+      <h2>API Endpoint Tester</h2>
+
+      <label for="httpMethod">Choose HTTP Method:</label>
+      <select id="httpMethod">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+      </select>
+
+      <br><br>
+
+      <label for="endpoint">Enter API Endpoint:</label>
+      <input type="text" id="endpoint" placeholder="e.g., /api/users" />
+
+      <br><br>
+
+      <label for="data">Enter Data (for POST/PUT only):</label>
+      <textarea id="data" placeholder='{"name": "John", "age": 30}' rows="4"></textarea>
+
+      <br><br>
+      <button onclick="testEndpoint()">Test</button>
+      <pre id="responseBox">Response will appear here...</pre>
+
+      <p id="instructions">
+        <strong>Instructions:</strong><br>
+        - Select the HTTP method you want to test (GET, POST, PUT, DELETE).<br>
+        - Enter the appropriate API endpoint (e.g., /api/users).<br>
+        - For POST and PUT, enter the necessary data in JSON format.<br>
+        - Click "Test" to see the response.
+      </p>
+    </section>
+
+    <section id="endpoints">
+      <h2>Available Endpoints</h2>
+      <ul>
+        <li><strong>GET /api/users</strong> - Retrieves all users.</li>
+        <li><strong>GET /api/users/:id</strong> - Retrieves a specific user by ID.</li>
+        <li><strong>POST /api/users</strong> - Creates a new user. <em>Requires JSON data like: { "name": "John", "age": 30 }</em></li>
+        <li><strong>PUT /api/users/:id</strong> - Updates an existing user by ID. <em>Requires JSON data like: { "name": "John", "age": 31 }</em></li>
+        <li><strong>DELETE /api/users/:id</strong> - Deletes a user by ID.</li>
+        <li><strong>GET /api/courses</strong> - Retrieves all courses.</li>
+        <li><strong>POST /api/courses</strong> - Creates a new course. <em>Requires JSON data like: { "title": "Course Title", "description": "Course Description" }</em></li>
+        <!-- Add more endpoints as necessary -->
+      </ul>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
