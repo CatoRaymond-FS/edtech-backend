@@ -21,7 +21,7 @@ app.use(express.json());
 // Routes
 // Welcome route for root URL
 app.get('/', (req, res) => {
-  res.send('Welcome to the EdTech Backend API. Visit /api/users, /api/courses, or other endpoints to test. Visit the frontend at');
+  res.send('Welcome to the EdTech Backend API. Visit /api/users, /api/courses, or other endpoints to test. Visit the frontend at <a href="https://catoraymond-fs.github.io/edtech-backend/">https://catoraymond-fs.github.io/edtech-backend/</a>');
 });
 app.use('/api/users', userRoutes);
 app.use('/api/submissions', submissionRoutes);
