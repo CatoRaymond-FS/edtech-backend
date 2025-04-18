@@ -39,10 +39,88 @@
 
       <p id="instructions">
         <strong>Instructions:</strong><br>
-        - Select the HTTP method you want to test (GET, POST, PUT, DELETE).<br>
-        - Enter the appropriate API endpoint (e.g., /api/users).<br>
-        - For POST and PUT, enter the necessary data in JSON format.<br>
-        - Click "Test" to see the response.
+        <ul>
+          <li><strong>GET Method:</strong> Use this to retrieve data. Example: <code>GET /api/users</code> will return all users.</li>
+          <li><strong>POST Method:</strong> Use this to create new data. Example: <code>POST /api/users</code> requires JSON data like:
+            <pre>{ "name": "John", "email": "john@example.com", "role": "student", "password": "password123" }</pre>
+            <strong>Fields:</strong>
+            <ul>
+              <li><code>name</code>: The name of the user (required).</li>
+              <li><code>email</code>: The email address (required, must be unique).</li>
+              <li><code>role</code>: The role of the user. Choices: <code>student</code>, <code>teacher</code>, <code>admin</code> (optional, defaults to <code>student</code>).</li>
+              <li><code>password</code>: The password for the user (required).</li>
+            </ul>
+          </li>
+          <li><strong>PUT Method:</strong> Use this to update existing data. Example: <code>PUT /api/users/:id</code> will update the user with the provided ID. Example data:
+            <pre>{ "name": "John", "email": "john.new@example.com", "role": "teacher", "password": "newpassword123" }</pre>
+            <strong>Fields:</strong>
+            <ul>
+              <li><code>name</code>: Updated name of the user (optional).</li>
+              <li><code>email</code>: Updated email address (optional, but must be unique if provided).</li>
+              <li><code>role</code>: Updated role of the user (optional).</li>
+              <li><code>password</code>: Updated password (optional, if not updated leave blank).</li>
+            </ul>
+          </li>
+          <li><strong>DELETE Method:</strong> Use this to delete existing data. Example: <code>DELETE /api/users/:id</code> will delete the user with the provided ID.</li>
+        </ul>
+
+        <h3>For Course-related Endpoints:</h3>
+        <ul>
+          <li><strong>POST /api/courses</strong> - Creates a new course. <em>Requires JSON data like:</em>
+            <pre>{ "title": "Course Title", "description": "Course Description" }</pre>
+            <strong>Fields:</strong>
+            <ul>
+              <li><code>title</code>: The title of the course (required).</li>
+              <li><code>description</code>: A short description of the course (optional).</li>
+            </ul>
+          </li>
+          <li><strong>PUT /api/courses/:id</strong> - Updates an existing course. <em>Requires JSON data like:</em>
+            <pre>{ "title": "Updated Course Title", "description": "Updated Course Description" }</pre>
+            <strong>Fields:</strong>
+            <ul>
+              <li><code>title</code>: Updated course title (optional).</li>
+              <li><code>description</code>: Updated course description (optional).</li>
+            </ul>
+          </li>
+          <li><strong>DELETE /api/courses/:id</strong> - Deletes a course by ID. Example: <code>/api/courses/1</code>.</li>
+        </ul>
+
+        <h3>For Assignment-related Endpoints:</h3>
+        <ul>
+          <li><strong>POST /api/assignments</strong> - Creates a new assignment. <em>Requires JSON data like:</em>
+            <pre>{ "title": "Assignment Title", "lesson": "LessonID", "dueDate": "2025-05-01T00:00:00Z" }</pre>
+            <strong>Fields:</strong>
+            <ul>
+              <li><code>title</code>: The title of the assignment (required).</li>
+              <li><code>lesson</code>: The ID of the associated lesson (required).</li>
+              <li><code>dueDate</code>: The due date of the assignment (optional, defaults to current time).</li>
+            </ul>
+          </li>
+          <li><strong>PUT /api/assignments/:id</strong> - Updates an existing assignment. <em>Requires JSON data like:</em>
+            <pre>{ "title": "Updated Assignment Title", "dueDate": "2025-05-15T00:00:00Z" }</pre>
+          </li>
+        </ul>
+
+        <h3>For Submission-related Endpoints:</h3>
+        <ul>
+          <li><strong>POST /api/submissions</strong> - Creates a new submission. <em>Requires JSON data like:</em>
+            <pre>{ "lessonId": "LessonID", "studentName": "Student Name", "submissionDate": "2025-04-20T00:00:00Z", "content": "Assignment Content" }</pre>
+            <strong>Fields:</strong>
+            <ul>
+              <li><code>lessonId</code>: The ID of the associated lesson (required).</li>
+              <li><code>studentName</code>: The name of the student (required).</li>
+              <li><code>submissionDate</code>: The date of submission (required).</li>
+              <li><code>content</code>: The content of the submission (required).</li>
+            </ul>
+          </li>
+          <li><strong>PUT /api/submissions/:id</strong> - Updates an existing submission. <em>Requires JSON data like:</em>
+            <pre>{ "grade": "A" }</pre>
+            <strong>Fields:</strong>
+            <ul>
+              <li><code>grade</code>: The grade assigned to the submission (optional).</li>
+            </ul>
+          </li>
+        </ul>
       </p>
     </section>
 
@@ -50,10 +128,10 @@
       <h2>Available Endpoints</h2>
       <ul>
         <li><strong>GET /api/users</strong> - Retrieves all users.</li>
-        <li><strong>GET /api/users/:id</strong> - Retrieves a specific user by ID.</li>
-        <li><strong>POST /api/users</strong> - Creates a new user. <em>Requires JSON data like: { "name": "John", "age": 30 }</em></li>
-        <li><strong>PUT /api/users/:id</strong> - Updates an existing user by ID. <em>Requires JSON data like: { "name": "John", "age": 31 }</em></li>
-        <li><strong>DELETE /api/users/:id</strong> - Deletes a user by ID.</li>
+        <li><strong>GET /api/users/:id</strong> - Retrieves a specific user by ID. Example: <code>/api/users/123</code>.</li>
+        <li><strong>POST /api/users</strong> - Creates a new user. <em>Requires JSON data like: { "name": "John", "email": "john@example.com", "role": "student", "password": "password123" }</em></li>
+        <li><strong>PUT /api/users/:id</strong> - Updates an existing user by ID. <em>Requires JSON data like: { "name": "John", "email": "john.new@example.com", "role": "teacher", "password": "newpassword123" }</em></li>
+        <li><strong>DELETE /api/users/:id</strong> - Deletes a user by ID. Example: <code>/api/users/123</code>.</li>
         <li><strong>GET /api/courses</strong> - Retrieves all courses.</li>
         <li><strong>POST /api/courses</strong> - Creates a new course. <em>Requires JSON data like: { "title": "Course Title", "description": "Course Description" }</em></li>
         <!-- Add more endpoints as necessary -->

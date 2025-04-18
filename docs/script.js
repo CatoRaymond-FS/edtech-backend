@@ -1,12 +1,12 @@
 async function testEndpoint() {
   const method = document.getElementById('httpMethod').value;
-  const endpoint = document.getElementById('endpoint').value;
-  const data = document.getElementById('data').value;
+  const endpoint = document.getElementById('endpoint').value.trim();
+  const data = document.getElementById('data').value.trim();
   const responseBox = document.getElementById('responseBox');
 
   const baseUrl = 'https://edtech-backend-hr01.onrender.com';
 
-  // Define request options
+  // Build request options
   const options = {
     method: method,
     headers: {
@@ -14,22 +14,34 @@ async function testEndpoint() {
     },
   };
 
-  // Add body data for POST/PUT
+  // Add body only for POST or PUT
   if (method === 'POST' || method === 'PUT') {
-    options.body = data ? data : '{}';
+    try {
+      options.body = JSON.stringify(JSON.parse(data || '{}'));
+    } catch (err) {
+      responseBox.textContent = `Invalid JSON: ${err.message}`;
+      return;
+    }
   }
 
   try {
-    // Fetch the data from the API
-    const res = await fetch(endpoint.startsWith('http') ? endpoint : `${baseUrl}${endpoint}`, options);
-    
-    // Check if response is not OK
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
+    const res = await fetch(
+      endpoint.startsWith('http') ? endpoint : `${baseUrl}${endpoint}`,
+      options
+    );
+
+    const contentType = res.headers.get('content-type');
+    let responseData;
+
+    if (contentType && contentType.includes('application/json')) {
+      responseData = await res.json();
+    } else {
+      responseData = await res.text();
     }
-    
-    const responseData = await res.json();
-    responseBox.textContent = JSON.stringify(responseData, null, 2);
+
+    responseBox.textContent = typeof responseData === 'string'
+      ? responseData
+      : JSON.stringify(responseData, null, 2);
   } catch (error) {
     responseBox.textContent = `Error: ${error.message}`;
   }

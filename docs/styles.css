@@ -1,39 +1,86 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fdf6f0;
+  background-color: #f5f7fa;
   color: #333;
   line-height: 1.6;
   padding: 2rem;
 }
 
 main {
-  max-width: 700px;
+  max-width: 900px;
   margin: auto;
   background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+/* Heading Styles */
+h1 {
+  font-size: 2.5rem;
   color: #4f46e5;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-#tester {
+h2 {
+  font-size: 2rem;
+  color: #4f46e5;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #4f46e5;
   margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-#endpoint, #data, #httpMethod {
-  width: 100%;
-  padding: 0.5rem;
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+ul li {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Form and Input Styling */
+label {
+  font-weight: bold;
+  display: block;
   margin-bottom: 0.5rem;
+  color: #333;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
   border-radius: 6px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  font-size: 1.1rem;
+  background-color: #fafafa;
+}
+
+textarea {
+  resize: vertical;
 }
 
 button {
-  padding: 0.5rem 1.5rem;
+  padding: 0.8rem 2rem;
   background-color: #4f46e5;
   color: white;
   border: none;
@@ -41,12 +88,15 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
 }
 
 button:hover {
   background-color: #3730a3;
 }
 
+/* Preformatted text box */
 pre {
   background-color: #f4f4f4;
   padding: 1rem;
@@ -54,4 +104,184 @@ pre {
   border: 1px solid #ddd;
   overflow-x: auto;
   white-space: pre-wrap;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Instructions Section Styling */
+#instructions {
+  background-color: #f9f9fb;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 2rem;
+}
+
+#instructions ul {
+  margin-left: 1.5rem;
+}
+
+#instructions li {
+  margin-bottom: 1.5rem;
+}
+
+/* Section Styling */
+section {
+  margin-bottom: 2.5rem;
+}
+
+#tester {
+  padding: 2rem;
+  background-color: #f5f7fa;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+#tester input,
+#tester textarea {
+  background-color: #fff;
+}
+
+/* Links Styling */
+a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+footer a {
+  color: #4f46e5;
+  font-weight: bold;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Mobile Devices (Portrait) */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  main {
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    padding: 0.8rem;
+  }
+
+  button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  #instructions {
+    font-size: 1rem;
+    padding: 1.5rem;
+  }
+
+  pre {
+    font-size: 1rem;
+  }
+}
+
+/* Tablets (Landscape and Portrait) */
+@media (max-width: 768px) {
+  main {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.3rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    padding: 1rem;
+  }
+
+  button {
+    padding: 0.8rem 1.8rem;
+  }
+
+  #instructions {
+    font-size: 1.1rem;
+    padding: 2rem;
+  }
+
+  pre {
+    font-size: 1.1rem;
+  }
+}
+
+/* Desktops and Laptops */
+@media (min-width: 1024px) {
+  main {
+    padding: 3rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    padding: 1.2rem;
+  }
+
+  button {
+    padding: 1rem 2rem;
+  }
+
+  #instructions {
+    font-size: 1.1rem;
+    padding: 2.5rem;
+  }
+
+  pre {
+    font-size: 1.2rem;
+  }
 }
